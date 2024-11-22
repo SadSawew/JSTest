@@ -11,7 +11,7 @@ function start() {
         money = +prompt("Ваш бюджет на месяц?", "");
     }
 }
-start();
+// start();
 
 
 let appData = {
@@ -67,6 +67,7 @@ let appData = {
             }
         },
         chooseIncome: function () {
+            let mas = '';
             let item = prompt("Что приносит дополнительный доход? (Перечислите через запятую)");
             while (!(typeof(item)==='string') || item == "" || item == null) {
                 item = prompt("Что приносит дополнительный доход? (Перечислите через запятую)");
@@ -78,8 +79,15 @@ let appData = {
             appData.income.sort();
 
             appData.income.forEach((item) => {
-                
-            })
-            
+                mas = mas + item + ', ';
+            });
+            mas = mas.slice(0, mas.length - 1);
+            alert("Способы доп. заработка: " + mas.slice(0, mas.length - 1));
         }
     };
+
+let data = '';
+for (let i in appData) {
+    data = data + appData[i] + ', \n'
+}
+console.log("Наша программа включает в себя данные: " + data)
